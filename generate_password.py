@@ -27,6 +27,8 @@ def generate_pass(upper: bool, lower: bool, number: bool, special: bool, length:
     password = ''
     for i in res:
         password +=str(i)
+    if special == False:
+        system(f'echo {password}|clip')
     return password
 
 
@@ -112,11 +114,13 @@ def main():
                     print('**Valor nao permitido')
                     pass
             password = generate_pass(upper, lower, numbers, special, length)
-            print(password)
-
+            print('\n '+password)
+            if special==False:
+                print('*Copiado!')
+        # Create again
         while(True):
             newpass = ''
-            newpass = input('Deseja gerar outra senha (y/n)? ')
+            newpass = input('\nDeseja gerar outra senha (y/n)? ')
             if newpass == 'y' or newpass == 'n':
                 newpass = True if newpass == 'y' else False
                 break
