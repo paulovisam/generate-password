@@ -15,9 +15,12 @@ def generate_pass(upper: bool, lower: bool, number: bool, special: bool, length:
         char += string.punctuation
     char = [*char]
     shuffle(char)
+    # If you don't have enough characters
     while True:
         if (len(char) < length):
-            char += shuffle(char)
+            char_copy = char.copy()
+            shuffle(char_copy)
+            char += char_copy
         else:
             break
     res = sample(char, length)
